@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D Disaster Awareness Hub</title>
+<link rel="stylesheet" href="homepage.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+
+<div class="logo-container">
+    <div class="logo1">
+        <img src="logo1.png" alt="Disaster Logo">
+    </div>
+    <div class="logo">DisasterVision 3D</div>
+</div>
+
+ <ul class="nav-links">
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="#" onclick="openSafetyModal()">Safety Tips</a></li>
+            <li><a href="#" onclick="openAboutModal()">About Us</a></li>
+            <li><a href="simulation.html">Simulations</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+</nav>
+
+
+
+<section class="hero">
+
+<h1>3D Disaster Awareness Hub</h1>
+
+<p>Learn how to respond to disasters through interactive 3D simulations</p>
+
+<div class="selector-box">
+
+<h3>Select Disaster Type</h3>
+
+<select>
+<option>Select Disaster</option>
+<option>Earthquake</option>
+<option>Flood</option>
+<option>Fire</option>
+<option>Cyclone</option>
+<option>Landslide</option>
+
+</select>
+
+<button>Start Simulation</button>
+
+</div>
+
+</section>
+
+
+
+
+<section class="disaster-info">
+
+<h2>Common Natural Disasters</h2>
+
+<div class="info-container">
+
+<div class="info-card">
+<h3>Earthquake</h3>
+<p>Sudden shaking of the ground caused by movement of tectonic plates.</p>
+</div>
+
+<div class="info-card">
+<h3>Flood</h3>
+<p>Overflow of water that submerges land causing damage and risk to life.</p>
+</div>
+
+<div class="info-card">
+<h3>Fire</h3>
+<p>Rapid spread of flames that can destroy property and threaten lives.</p>
+</div>
+
+<div class="info-card">
+<h3>Cyclone</h3>
+<p>Strong rotating storm with heavy rain and powerful winds.</p>
+</div>
+
+</div>
+
+</section>
+
+
+
+<section class="awareness">
+
+<h2>Why Disaster Awareness Matters</h2>
+
+<p>
+Millions of people are affected by disasters every year.
+Learning the correct safety actions can save lives.
+Our platform provides realistic 3D simulations to teach
+disaster response in an interactive way.
+</p>
+
+</section>
+
+<div id="safetyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            
+            <div id="selectionMenu">
+                <h2>Safety Guidelines</h2>
+                <p>Pick a disaster to view safety protocols:</p>
+                <div class="modal-grid">
+                    <button onclick="showDisasterTips('earthquake')">Earthquake</button>
+                    <button onclick="showDisasterTips('flood')">Flood</button>
+                    <button onclick="showDisasterTips('fire')">Fire</button>
+                    <button onclick="showDisasterTips('cyclone')">Cyclone</button>
+                </div>
+            </div>
+
+            <div id="tipsDetail" style="display:none;">
+                <button class="back-btn" onclick="showMenu()">← Back to List</button>
+                <h2 id="modalTitle"></h2>
+                <div class="tips-grid">
+                    <div class="tip-col">
+                        <h4 class="before">BEFORE</h4>
+                        <ul id="listBefore"></ul>
+                    </div>
+                    <div class="tip-col">
+                        <h4 class="during">DURING</h4>
+                        <ul id="listDuring"></ul>
+                    </div>
+                    <div class="tip-col">
+                        <h4 class="after">AFTER</h4>
+                        <ul id="listAfter"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<div id="aboutModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeAboutModal()">&times;</span>
+        <div class="about-container">
+            <h2>About DisasterVision 3D</h2>
+            <hr style="border: 0; border-top: 1px solid #38bdf8; margin: 20px 0;">
+            <p><strong>DisasterVision 3D</strong> is an immersive educational platform designed to bridge the gap between theoretical knowledge and practical disaster response.</p>
+            
+            <div class="tips-grid" style="margin-top: 30px;">
+                <div class="tip-col">
+                    <h4 style="color: #38bdf8;">Our Mission</h4>
+                    <p>To reduce disaster-related casualties by providing realistic, risk-free environments where users can practice life-saving maneuvers.</p>
+                </div>
+                <div class="tip-col">
+                    <h4 style="color: #38bdf8;">The Technology</h4>
+                    <p>Utilizing high-fidelity 3D graphics and interactive physics, we simulate real-world scenarios like earthquakes and floods.</p>
+                </div>
+                <div class="tip-col">
+                    <h4 style="color: #38bdf8;">Our Team</h4>
+                    <p>We are a group of students dedicated to leveraging technology for social safety and community awareness.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section id="contact" class="contact-section">
+    <h2>Contact Us</h2>
+    <div class="contact-container">
+        <div class="contact-info">
+            <h3>Get In Touch</h3>
+            <p>Have questions about our 3D simulations or disaster safety? Reach out to our team.</p>
+            <ul>
+                <li><strong>Email:</strong> support@disastervision3d.com</li>
+                <li><strong>Location:</strong> Educational Project Hub, India</li>
+            </ul>
+        </div>
+        
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+
+<p>© 2026 3D Disaster Awareness Hub | Educational Project</p>
+
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

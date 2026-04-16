@@ -1,0 +1,392 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0f2027,#3d6d7d,#437c95);
+color:white;
+}
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:10px 4%;
+background:rgba(45, 45, 45, 0.217);
+backdrop-filter:blur(8px);
+}
+
+.logo-container{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.logo1 img{
+height:60px;
+width:auto;
+}
+
+.logo{
+font-size:25px;
+font-weight:bold;
+letter-spacing:1px;
+color:white;
+}
+
+.nav-links{
+display:flex;
+gap:25px;
+list-style:none;
+align-items:center;
+}
+
+.nav-links a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:0.3s;
+display:inline-block;
+}
+
+.nav-links a:hover{
+color:#94defe;
+transform:translateY(-3px);
+text-decoration:underline;
+}
+
+.hero{
+height:80vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.hero h1{
+font-size:52px;
+margin-bottom:10px;
+}
+
+.hero p{
+font-size:20px;
+margin-bottom:30px;
+}
+
+.hero h3{
+    font-size: 23px;
+}
+
+.selector-box{
+background:rgba(248, 247, 247, 0.176);
+padding:45px;
+border-radius:12px;
+backdrop-filter:blur(12px);
+box-shadow:0 8px 30px rgba(0,0,0,0.3);
+animation:fadeIn 1.5s ease;
+}
+
+.selector-box select{
+width:200px;
+padding:10px;
+margin-top:10px;
+border-radius:6px;
+border:none;
+}
+
+.selector-box button{
+margin-top:15px;
+padding:10px 20px;
+border:none;
+border-radius:6px;
+background:#38bdf8;
+color:white;
+cursor:pointer;
+}
+
+.selector-box button:hover{
+background:#0284c7;
+}
+
+.disaster-info{
+padding:80px 10%;
+text-align:center;
+}
+
+.disaster-info h2{
+margin-bottom:40px;
+font-size:36px;
+}
+
+.info-container{
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+}
+
+.info-card{
+background:rgba(255,255,255,0.1);
+padding:25px;
+width:220px;
+border-radius:12px;
+backdrop-filter:blur(6px);
+transition:0.3s;
+}
+
+.info-card:hover{
+transform:translateY(-10px);
+background:rgba(255,255,255,0.2);
+}
+
+.awareness{
+text-align:center;
+padding:60px 20%;
+}
+
+.awareness h2{
+font-size:34px;
+margin-bottom:20px;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:rgba(0,0,0,0.3);
+margin-top:40px;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* --- Added Modal & Safety Tips Styling --- */
+
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+}
+
+.modal-content {
+    background: #102a35;
+    margin: 5% auto;
+    padding: 30px;
+    border: 1px solid #38bdf8;
+    width: 85%;
+    max-width: 1000px;
+    border-radius: 15px;
+    position: relative;
+    color: white;
+}
+
+.close-btn {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 35px;
+    cursor: pointer;
+    color: #38bdf8;
+}
+
+.modal-grid {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.modal-grid button {
+    padding: 15px 25px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #38bdf8;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.modal-grid button:hover {
+    background: #38bdf8;
+}
+
+/* Flexbox Layout for Before, During, After */
+.tips-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.tip-col {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.tip-col h4 {
+    margin-bottom: 15px;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+.before { color: #ffcc00; border-bottom: 2px solid #ffcc00; }
+.during { color: #ff4d4d; border-bottom: 2px solid #ff4d4d; }
+.after { color: #4ade80; border-bottom: 2px solid #4ade80; }
+
+.tip-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.tip-col li {
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.4;
+    padding-left: 15px;
+    position: relative;
+}
+
+.tip-col li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #38bdf8;
+}
+
+.back-btn {
+    background: transparent;
+    border: 1px solid #38bdf8;
+    color: #38bdf8;
+    padding: 5px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+/* Styling for About Us content inside the modal */
+.about-container {
+    text-align: center;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.about-container h2 {
+    color: #38bdf8;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.about-container p {
+    font-size: 17px;
+    color: #e0e0e0;
+}
+
+/* Ensure the grid looks good for About Us too */
+.about-container .tip-col p {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/* --- Contact Section Styles --- */
+.contact-section {
+    padding: 80px 10%;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.02); /* Subtle contrast from body */
+}
+
+.contact-section h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 50px;
+    text-align: left;
+    flex-wrap: wrap;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-info h3 {
+    color: #38bdf8;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.contact-info ul {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.contact-info li {
+    margin-bottom: 10px;
+}
+
+.contact-form {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input, .contact-form textarea {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    outline: none;
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+    border-color: #38bdf8;
+}
+
+.contact-form button {
+    padding: 12px;
+    background: #38bdf8;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact-form button:hover {
+    background: #0284c7;
+    transform: translateY(-2px);
+}
+
+/* Update navbar behavior */
+html {
+    scroll-behavior: smooth;
+}
