@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>3D Disaster Awareness Platform - Earthquake</title>
+  <style>
+    body { margin: 0; overflow: hidden; font-family: Arial; }
+    
+    #ui {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: white;
+      z-index: 10;
+    }
+
+    button {
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    #intensity {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="ui">
+  <h2>🌍 Earthquake Simulation</h2>
+  <button onclick="startEarthquake()">Trigger Earthquake</button>
+  <div id="intensity">Intensity: 0</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.158/build/three.min.js"></script>
+
+<script>
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x111111);
+
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+  camera.position.set(0, 10, 15);
+
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+
+  // Light
+  const light = new THREE.DirectionalLight(0xffffff, 1);
+  light.position.set(10, 20, 10);
+  scene.add(light);
+
+  // Ground
+  const groundGeo = new THREE.PlaneGeometry(20, 20, 20, 20);
+  const groundMat = new THREE.MeshStandardMaterial({ color: 0x2e8b57, wireframe: false });
+  const ground = new THREE.Mesh(groundGeo, groundMat);
+  ground.rotation.x = -Math.PI / 2;
+  scene.add(ground);
+
+  // Buildings
+  const buildings = [];
+  for (let i = 0; i < 15; i++) {
+    const h = Math.random() * 4 + 2;
+    const geo = new THREE.BoxGeometry(1, h, 1);
+    const mat = new THREE.MeshStandardMaterial({ color: 0xaaaaaa });
+    const b = new THREE.Mesh(geo, mat);
+
+    b.position.set(
+      (Math.random() - 0.5) * 12,
+      h / 2,
+      (Math.random() - 0.5) * 12
+    );
+
+    scene.add(b);
+    buildings.push(b);
+  }
+
+  let quake = false;
+  let intensity = 0;
+
+  function startEarthquake() {
+    quake = true;
+    intensity = 0.02;
+  }
+
+  function animate() {
+    requestAnimationFrame(animate);
+
+    if (quake) {
+      intensity += 0.0005;
+
+      document.getElementById("intensity").innerText =
+        "Intensity: " + intensity.toFixed(3);
+
+      // Ground shaking
+      const pos = ground.geometry.attributes.position;
+      for (let i = 0; i < pos.count; i++) {
+        pos.setY(i, Math.sin(Date.now() * 0.01 + i) * intensity);
+      }
+      pos.needsUpdate = true;
+
+      // Buildings reaction
+      buildings.forEach(b => {
+        b.rotation.z = (Math.random() - 0.5) * intensity * 5;
+        b.rotation.x = (Math.random() - 0.5) * intensity * 5;
+
+        // Collapse effect for high intensity
+        if (intensity > 0.08) {
+          b.position.y -= 0.02;
+        }
+      });
+
+      // Camera shake
+      camera.position.x += (Math.random() - 0.5) * intensity;
+      camera.position.y += (Math.random() - 0.5) * intensity;
+
+      // Stop after some time
+      if (intensity > 0.12) {
+        quake = false;
+      }
+    }
+
+    renderer.render(scene, camera);
+  }
+
+  animate();
+
+  // Resize
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+</script>
+
+</body>
+</html>
