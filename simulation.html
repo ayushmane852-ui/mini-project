@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simulation - Disaster Awareness</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+
+    /* Glass container */
+    .container {
+      width: 80%;
+      max-width: 900px;
+      padding: 30px;
+      border-radius: 20px;
+
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 32px;
+    }
+
+    p {
+      margin-bottom: 30px;
+      opacity: 0.8;
+    }
+
+    .cards {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .card {
+      width: 200px;
+      height: 150px;
+      border-radius: 15px;
+
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.08);
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .card h3 {
+      margin-top: 10px;
+    }
+
+    .icon {
+      font-size: 40px;
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.2);
+      color: white;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+    }
+
+    .back-btn:hover {
+      background: rgba(255,255,255,0.4);
+    }
+
+  </style>
+</head>
+
+<body>
+
+<a href="homepage.html">
+  <button class="back-btn">⬅ Back</button>
+</a>
+
+<div class="container">
+  <h1>🌍 Disaster Simulation</h1>
+  <p>Select a disaster to start simulation</p>
+
+  <div class="cards">
+
+    <!-- EARTHQUAKE -->
+    <div class="card" onclick="startEarthquake()">
+      <div class="icon">🌍</div>
+      <h3>Earthquake</h3>
+    </div>
+
+    <!-- FLOOD -->
+    <div class="card" onclick="startFlood()">
+      <div class="icon">🌊</div>
+      <h3>Flood</h3>
+    </div>
+
+    <!-- FIRE -->
+    <div class="card" onclick="startFire()">
+      <div class="icon">🔥</div>
+      <h3>Fire</h3>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // You will connect real simulations later
+
+  function startEarthquake() {
+    //alert("Earthquake simulation will start here");
+    // 👉 Later connect your earthquake JS here
+    // Example:
+    window.location.href = "earthquack.html";
+  }
+
+  function startFlood() {
+    //alert("Flood simulation coming soon");
+    window.location.href = "flood.html";
+  }
+
+  function startFire() {
+    //alert("Fire simulation coming soon");
+    window.location.href = "fire.html";
+  }
+</script>
+
+</body>
+</html>
